@@ -4,8 +4,12 @@ from Pages.BasePage import BasePage
 
 
 class NewPostPageLocators:
-    EXAMPLE_LOCATOR = (By.CLASS_NAME, 'css-34e4ux')
+    ADD_POST_FORM = (By.CLASS_NAME, "card")
+    CHOOSE_PHOTO_FIELD = (By.ID, 'image')
+    DESCRIPTION_FIELD = (By.ID, 'description')
+    CREATE_BUTTON = (By.ID, "send")
 
 
 class NewPostPage(BasePage):
-    pass
+    def add_post(self, photo, description="super fotka <3 pozdrawiam"):
+        pass
