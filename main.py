@@ -1,16 +1,29 @@
-# This is a sample Python script.
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+from Pages.LoginPage import LoginPage
+from Pages.MainPage import MainPage
 
 
-# Press the green button in the gutter to run the script.
+def login_user(driver):
+    driver.get("http://laragram.ml/")
+    mainPage = MainPage(driver, debug=False)
+    mainPage.register()
+
+
+def register_user(driver):
+    driver.get("http://laragram.ml/")
+    mainPage = MainPage(driver, debug=False)
+    mainPage.go_to_login_page()
+    loginPage = LoginPage(driver, debug=False)
+    loginPage.login()
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    options = webdriver.ChromeOptions()
+    options.add_argument("-incognito")
+    # options.add_argument('headless')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    driver = webdriver.Chrome("./drivers/chromedriver", options=options)
+    
+    driver.close()
