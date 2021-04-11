@@ -1,6 +1,6 @@
 #TODO RegisterPage
 from selenium.webdriver.common.by import By
-from BasePage import BasePage
+from Pages.BasePage import BasePage
 
 
 class RegisterPageLocators:
