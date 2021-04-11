@@ -1,5 +1,4 @@
 #TODO LoginPage
-from time import sleep
 
 from selenium.webdriver.common.by import By
 from Pages.BasePage import BasePage
@@ -25,4 +24,3 @@ class LoginPage(BasePage):
         email_field.send_keys("mp62639@o2.pl")
         password_field.send_keys("admin123")
         login_confirm_button.click()
-        sleep(20)
