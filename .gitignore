@@ -131,3 +131,4 @@ dmypy.json
 
 .idea
 /.idea/
+drivers/chromedriver.exe
