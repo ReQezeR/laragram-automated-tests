@@ -15,12 +15,12 @@ class LoginPageLocators:
 
 
 class LoginPage(BasePage):
-    def login(self):
+    def login(self, username="mp62639@o2.pl", password="admin123"):
         login_form = self.driver.find_element(*LoginPageLocators.LOGIN_FORM)
         email_field = login_form.find_element(*LoginPageLocators.EMAIL_FIELD)
         password_field = login_form.find_element(*LoginPageLocators.PASSWORD_FIELD)
         login_confirm_button = login_form.find_element(*LoginPageLocators.LOGIN_BUTTON)
 
-        email_field.send_keys("mp62639@o2.pl")
-        password_field.send_keys("admin123")
+        email_field.send_keys(username+"@testowo.com")
+        password_field.send_keys(password)
         login_confirm_button.click()
