@@ -1,34 +1,32 @@
-#TODO HomePage
-
+import random
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
+from Elements.FeedPost import FeedPost
+from Elements.UserHeader import UserHeader
 from Pages.BasePage import BasePage
 
 
 class HomePageLocators:
-    SHARE_PHOTO_PAGE_LINK = (By.XPATH, "//*[@title='New post']")
-    YOUR_PROFILE_PAGE_LINK = (By.XPATH, "//*[@title='Your Profile']")
-    SETTINGS_PAGE_LINK = (By.XPATH, "//*[@title='Settings']")
-    LOGOUT_LINK = (By.XPATH, "//*[@title='Logout']")
+    FEED_POSTS = (By.CLASS_NAME, 'col-12.col-md-8')
+    FEED_POST = (By.CLASS_NAME, 'card.mb-2')
+    LOGGED_USER_NAME = (By.XPATH, '//*[@id="app"]/main/div/div[2]/div/div[2]/a')
 
 
 class HomePage(BasePage):
-    def logout(self):
-        logout_button = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(HomePageLocators.LOGOUT_LINK))
-        # logout_button = self.driver.find_element(*HomePageLocators.LOGOUT_LINK)
-        logout_button.click()
+    def __init__(self, driver, debug):
+        super().__init__(driver, debug)
+        self.header = UserHeader(driver, debug)
 
-    def go_to_share_photo_page(self):
-        share_photo_button = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(HomePageLocators.SHARE_PHOTO_PAGE_LINK))
-        # share_photo_button = self.driver.find_element(*HomePageLocators.SHARE_PHOTO_PAGE_LINK)
-        share_photo_button.click()
+    def goToRandomPostFromFeed(self):
+        feed = self.driver.find_element(*HomePageLocators.FEED_POSTS)
+        post_list = feed.find_elements(*HomePageLocators.FEED_POST)
+        assert len(post_list) != 0
+        feed_post = FeedPost(random.choice(post_list), debug=self.debug) # wybranie losowego postu
+        feed_post.go_to_add_comment_page()
 
-    def go_to_settings_page(self):
-        settings_button = self.driver.find_element(*HomePageLocators.SETTINGS_PAGE_LINK)
-        settings_button.click()
+    def checkUser(self, login):
+        userName = self.driver.find_element(*HomePageLocators.LOGGED_USER_NAME)
+        assert (userName.text == login)
 
-    def go_to_profile_page(self):
-        profile_button = self.driver.find_element(*HomePageLocators.YOUR_PROFILE_PAGE_LINK)
-        profile_button.click()
