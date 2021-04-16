@@ -1,6 +1,5 @@
-#TODO LoginPage
-
 from selenium.webdriver.common.by import By
+from Elements.BasicHeader import BasicHeader
 from Pages.BasePage import BasePage
 
 
@@ -10,17 +9,28 @@ class LoginPageLocators:
     PASSWORD_FIELD = (By.ID, 'password')
     LOGIN_BUTTON = (By.TAG_NAME, "button")
 
-    LOGIN_PAGE_LINK = (By.LINK_TEXT, "Login")
-    REGISTER_PAGE_LINK = (By.LINK_TEXT, "Register")
+    INVALID_FEEDBACK = (By.CLASS_NAME, "invalid-feedback")
 
 
 class LoginPage(BasePage):
-    def login(self, username="mp62639@o2.pl", password="admin123"):
+    def __init__(self, driver, debug):
+        super().__init__(driver, debug)
+        self.header = BasicHeader(driver, debug)
+
+    def login(self, email="mp62639@o2.pl", password="admin123"):
         login_form = self.driver.find_element(*LoginPageLocators.LOGIN_FORM)
         email_field = login_form.find_element(*LoginPageLocators.EMAIL_FIELD)
         password_field = login_form.find_element(*LoginPageLocators.PASSWORD_FIELD)
         login_confirm_button = login_form.find_element(*LoginPageLocators.LOGIN_BUTTON)
+        email_field.send_keys(email)
+        if self.debug: print("Email field filled")
 
-        email_field.send_keys(username+"@testowo.com")
         password_field.send_keys(password)
+        if self.debug: print("Password field filled")
+
         login_confirm_button.click()
+        if self.debug: print("Login button clicked")
+
+    def checkInvalidDataFeedback(self):
+        self.driver.find_element(*LoginPageLocators.INVALID_FEEDBACK)
+        if self.debug: print("Invalid feedback found")
