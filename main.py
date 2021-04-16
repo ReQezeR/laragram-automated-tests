@@ -13,17 +13,17 @@ from Pages.NewPostPage import NewPostPage
 def register_user(driver, username, email, password):
     driver.get("http://laragram.ml/")
     mainPage = MainPage(driver, debug=False)
-    mainPage.register(username, email, password)
+    mainPage.register_form.register(username, email, password)
     homePage = HomePage(driver, debug=False)
-    homePage.logout()
+    homePage.header.logout()
 
 
-def login_user(driver, username, password):
+def login_user(driver, email, password):
     driver.get("http://laragram.ml/")
     mainPage = MainPage(driver, debug=False)
-    mainPage.go_to_login_page()
+    mainPage.header.go_to_login_page()
     loginPage = LoginPage(driver, debug=False)
-    loginPage.login(username, password)
+    loginPage.login(email, password)
 
 
 def populate_accounts(driver, count):
@@ -40,11 +40,11 @@ def populate_photos(driver, acount_number, photo_count):
         homePage = HomePage(driver, debug=False)
         for j in range(photo_count):
             photo_id = str(randint(1, 25))+".jpg"
-            homePage.go_to_share_photo_page()
+            homePage.header.go_to_share_photo_page()
 
             newPostPage = NewPostPage(driver, debug=False)
             newPostPage.add_post(photo=photo_id, description="#fotka #przyjazn #life #cool")
-        homePage.logout()
+        homePage.header.logout()
 
 
 if __name__ == '__main__':
@@ -54,6 +54,5 @@ if __name__ == '__main__':
 
     driver = webdriver.Chrome("./drivers/chromedriver", options=options)
     # populate_accounts(driver, 10)
-    populate_photos(driver, 10, 13)
-    # sleep(10)
+    # populate_photos(driver, 10, 13)
     driver.close()
