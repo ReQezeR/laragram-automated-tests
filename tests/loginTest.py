@@ -21,7 +21,7 @@ class LoginTest(unittest.TestCase):
         driver = self.driver
         driver.get("http://laragram.ml/")
         mainPage = MainPage(driver, debug=self.debug)
-        mainPage.header.go_to_login_page()
+        mainPage.header.goToLoginPage()
         loginPage = LoginPage(driver, debug=self.debug)
         loginPage.login(email, password)
         homePage = HomePage(driver, debug=self.debug)
@@ -32,7 +32,7 @@ class LoginTest(unittest.TestCase):
         driver = self.driver
         driver.get("http://laragram.ml/")
         mainPage = MainPage(driver, debug=self.debug)
-        mainPage.header.go_to_login_page()
+        mainPage.header.goToLoginPage()
         loginPage = LoginPage(driver, debug=self.debug)
         loginPage.login(email, password)
         loginPage.checkInvalidDataFeedback() #sprawdzenie czy nie zalogowano

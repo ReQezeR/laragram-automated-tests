@@ -26,7 +26,7 @@ class UserHeader(BasicElement):
         search_button.click()
         if self.debug: print("Search button clicked")
 
-    def go_to_home_page(self):
+    def goToHomePage(self):
         home_page_button = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(UserHeaderLocators.HOME_PAGE_LINK))
         home_page_button.click()
         if self.debug: print("HomePage button clicked")
@@ -36,17 +36,17 @@ class UserHeader(BasicElement):
         logout_button.click()
         if self.debug: print("Logout button clicked")
 
-    def go_to_new_post_page(self):
+    def goToNewPostPage(self):
         new_post_button = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(UserHeaderLocators.NEW_POST_PAGE_LINK))
         new_post_button.click()
         if self.debug: print("NewPostPage button clicked")
 
-    def go_to_settings_page(self):
+    def goToSettingsPage(self):
         settings_button = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(UserHeaderLocators.SETTINGS_PAGE_LINK))
         settings_button.click()
         if self.debug: print("Settings button clicked")
 
-    def go_to_your_profile_page(self):
+    def goToYourProfilePage(self):
         your_profile_button = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(UserHeaderLocators.YOUR_PROFILE_PAGE_LINK))
         your_profile_button.click()
         if self.debug: print("YourProfile button clicked")

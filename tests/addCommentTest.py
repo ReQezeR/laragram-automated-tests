@@ -22,7 +22,7 @@ class AddCommentTest(unittest.TestCase):
         driver = self.driver
         driver.get("http://laragram.ml/")
         mainPage = MainPage(driver, debug=debug)
-        mainPage.header.go_to_login_page()
+        mainPage.header.goToLoginPage()
         loginPage = LoginPage(driver, debug=debug)
         loginPage.login(email, password)
         homePage = HomePage(driver, debug=debug)

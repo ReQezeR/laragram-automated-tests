@@ -21,7 +21,7 @@ def register_user(driver, username, email, password):
 def login_user(driver, email, password):
     driver.get("http://laragram.ml/")
     mainPage = MainPage(driver, debug=False)
-    mainPage.header.go_to_login_page()
+    mainPage.header.goToLoginPage()
     loginPage = LoginPage(driver, debug=False)
     loginPage.login(email, password)
 

@@ -24,7 +24,7 @@ class HomePage(BasePage):
         post_list = feed.find_elements(*HomePageLocators.FEED_POST)
         assert len(post_list) != 0
         feed_post = FeedPost(random.choice(post_list), debug=self.debug) # wybranie losowego postu
-        feed_post.go_to_add_comment_page()
+        feed_post.goToAddCommentPage()
 
     def checkUser(self, login):
         userName = self.driver.find_element(*HomePageLocators.LOGGED_USER_NAME)

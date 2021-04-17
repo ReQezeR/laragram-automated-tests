@@ -43,7 +43,7 @@ class RegisterTest(unittest.TestCase):
         driver = self.driver
         driver.get("http://laragram.ml/")
         mainPage = MainPage(driver, debug=self.debug)
-        mainPage.header.go_to_register_page()
+        mainPage.header.goToRegisterPage()
         registerPage = RegisterPage(driver, debug=self.debug)
         registerPage.register_form.register(username=login, email=email, password=password)
         homePage = HomePage(driver, debug=self.debug)
@@ -54,7 +54,7 @@ class RegisterTest(unittest.TestCase):
         driver = self.driver
         driver.get("http://laragram.ml/")
         mainPage = MainPage(driver, debug=self.debug)
-        mainPage.header.go_to_register_page()
+        mainPage.header.goToRegisterPage()
         registerPage = RegisterPage(driver, debug=self.debug)
         registerPage.register_form.register(username=login, email=email, password=password)
         registerPage.register_form.checkInvalidDataFeedback()

@@ -15,13 +15,13 @@ class FeedPostLocators:
 
 
 class FeedPost(BasicElement):
-    def go_to_add_comment_page(self):
+    def goToAddCommentPage(self):
         post_footer = self.driver.find_element(*FeedPostLocators.POST_FOOTER)
         add_comment_page_button = post_footer.find_element(*FeedPostLocators.POST_FOOTER_COMMENT_BUTTON)
         add_comment_page_button.click()
         if self.debug: print("Add comment button clicked")
 
-    def go_to_user_profile_page(self):
+    def goToUserProfilePage(self):
         post_header = self.driver.find_element(*FeedPostLocators.POST_HEADER)
         user_profile_button = post_header.find_element(*FeedPostLocators.POST_HEADER_USER_NAME)
         user_profile_button.click()

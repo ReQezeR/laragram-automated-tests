@@ -21,17 +21,17 @@ class BasicHeader(BasicElement):
         search_button.click()
         if self.debug: print("Search button clicked")
 
-    def go_to_home_page(self):
+    def goToHomePage(self):
         main_page_button = self.driver.find_element(*BasicHeaderLocators.MAIN_PAGE_LINK)
         main_page_button.click()
         if self.debug: print("MainPage button clicked")
 
-    def go_to_login_page(self):
+    def goToLoginPage(self):
         login_page_button = self.driver.find_element(*BasicHeaderLocators.LOGIN_PAGE_LINK)
         login_page_button.click()
         if self.debug: print("LoginPage button clicked")
 
-    def go_to_register_page(self):
+    def goToRegisterPage(self):
         register_page_button = self.driver.find_element(*BasicHeaderLocators.REGISTER_PAGE_LINK)
         register_page_button.click()
         if self.debug: print("RegisterPage button clicked")
