@@ -10,6 +10,8 @@ class RegisterFormLocators:
     PASSWORD_CONFIRM_FIELD = (By.ID, 'password-confirm')
     REGISTER_BUTTON = (By.TAG_NAME, "button")
 
+    INVALID_FEEDBACK = (By.CLASS_NAME, "invalid-feedback")
+
 
 class RegisterForm(BasicElement):
     def register(self, username="Abadozaur123", email="Abadozaur@gmail.com", password="testtest123"):
@@ -35,3 +37,6 @@ class RegisterForm(BasicElement):
         register_confirm_button.click()
         if self.debug: print("Register button clicked")
 
+    def checkInvalidDataFeedback(self):
+        self.driver.find_element(*RegisterFormLocators.INVALID_FEEDBACK)
+        if self.debug: print("Invalid feedback found")
