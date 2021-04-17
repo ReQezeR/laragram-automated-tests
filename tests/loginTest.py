@@ -1,20 +1,19 @@
 from selenium import webdriver
-import time
 import unittest
 
 from Pages.HomePage import HomePage
 from Pages.LoginPage import LoginPage
 from Pages.MainPage import MainPage
-from Pages.PostPage import PostPage
 
 
 class LoginTest(unittest.TestCase):
     debug = False
+
     @classmethod
     def setUpClass(cls):
         options = webdriver.ChromeOptions()
         options.add_argument("-incognito")
-        # options.add_argument('headless')
+        options.add_argument('headless')
         cls.driver = webdriver.Chrome("../drivers/chromedriver", options=options)
         cls.driver.implicitly_wait(5)
 

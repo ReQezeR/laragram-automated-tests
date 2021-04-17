@@ -13,7 +13,7 @@ class AddCommentTest(unittest.TestCase):
     def setUpClass(cls):
         options = webdriver.ChromeOptions()
         options.add_argument("-incognito")
-        # options.add_argument('headless')
+        options.add_argument('headless')
         cls.driver = webdriver.Chrome("../drivers/chromedriver", options=options)
         cls.driver.implicitly_wait(5)
 
