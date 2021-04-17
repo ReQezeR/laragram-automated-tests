@@ -39,3 +39,14 @@ class PostPage(BasePage):
                 break
         assert check_flag
 
+    def checkDescription(self, query):
+        comment_section = self.driver.find_element(*PostPageLocators.COMMENT_SECTION)
+        comments = comment_section.find_elements(*PostPageLocators.COMMENT)
+        check_flag = False
+        for c in comments:
+            if query in c.text:
+                check_flag = True
+                if self.debug: print("Description found")
+                break
+        assert check_flag
+
